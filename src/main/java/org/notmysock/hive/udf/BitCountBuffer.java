@@ -2,6 +2,7 @@ package org.notmysock.hive.udf;
 
 import java.io.Serializable;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.BitSet;
 
@@ -16,7 +17,7 @@ public class BitCountBuffer extends AbstractAggregationBuffer implements Seriali
   long[] bytedist = new long[Long.BYTES*0xff];
   long count = 0;
   
-  transient ByteBuffer bbuf = ByteBuffer.allocate(Long.BYTES);
+  transient ByteBuffer bbuf = ByteBuffer.allocate(Long.BYTES).order(ByteOrder.LITTLE_ENDIAN);
 
   public void add(long value) {
     count++;
