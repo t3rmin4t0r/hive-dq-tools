@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.notmysock.hive.udf</groupId>
+  <artifactId>hive-dq</artifactId>
+
+  <version>1.0-SNAPSHOT</version>
+  <name>hive-dq</name>
+
+  <properties>
+    <hive.version>2.1.0</hive.version>
+	<hadoop.version>2.7.0</hadoop.version>
+  </properties>
+
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-exec</artifactId>
+      <version>${hive.version}</version>
+	  <type>jar</type>
+	  <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+	<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>build-exec-bundle</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <minimizeJar>false</minimizeJar>
+              <artifactSet>
+                <includes>
+				  <include>org.notmysock.hive:hive-dq</include>
+				</includes>
+				<excludes>
+				  <exclude>org.apache.hive:*</exclude>
+				  <exclude>org.apache.hadoop:*</exclude>
+				  <exclude>*:*</exclude>
+				</excludes>
+              </artifactSet>
+            </configuration>
+          </execution>
+		</executions>
+	  </plugin>
+	  -->
+	</plugins>
+  </build>
+</project>
